@@ -1,0 +1,1072 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "API - ENACOM",
+    "description": "API ENACOM",
+    "version": "1.0.0",
+    "contact": {
+      "email": "engjoaobarbosa@gmail.com"
+    }
+  },
+  "paths": {
+    "/client": {
+      "post": {
+        "tags": [
+          "Client"
+        ],
+        "summary": "Create a client",
+        "description": "Create a client",
+        "security": [],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string"
+                  },
+                  "cpf": {
+                    "type": "string"
+                  },
+                  "phone": {
+                    "type": "string"
+                  },
+                  "schema": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/definitions/address"
+                    }
+                  },
+                  "purchases": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/definitions/purchases"
+                    }
+                  }
+                },
+                "example": {
+                  "name": "cliente 5",
+                  "cpf": "14931697003",
+                  "phone": "(65)98230-3620",
+                  "address": [
+                    {
+                      "address": "Rua Parauna",
+                      "complement": "Lote 1",
+                      "zipCode": "79070534",
+                      "neighborhood": "Rua Parauna"
+                    }
+                  ],
+                  "purchases": []
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Client Created"
+          },
+          "404": {
+            "description": "Not Found Error"
+          },
+          "500": {
+            "description": "Server Error"
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "Client"
+        ],
+        "summary": "List all Clients",
+        "description": "List all Clients",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "type": "string"
+                      },
+                      "description": {
+                        "type": "string"
+                      },
+                      "name": {
+                        "type": "string"
+                      },
+                      "cpf": {
+                        "type": "string"
+                      },
+                      "phone": {
+                        "type": "string"
+                      },
+                      "created_at": {
+                        "type": "string"
+                      },
+                      "updated_at": {
+                        "type": "string"
+                      },
+                      "deleted_at": {
+                        "type": "string"
+                      },
+                      "schema": {
+                        "type": "array",
+                        "items": {
+                          "$ref": "#/definitions/address"
+                        }
+                      },
+                      "purchases": {
+                        "type": "array",
+                        "items": {
+                          "$ref": "#/definitions/purchases"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Client"
+        ],
+        "summary": "Update a Client",
+        "description": "Update a Client",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string"
+                  },
+                  "cpf": {
+                    "type": "string"
+                  },
+                  "phone": {
+                    "type": "string"
+                  },
+                  "schema": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/definitions/address"
+                    }
+                  }
+                },
+                "example": {
+                  "name": "Client 2",
+                  "cpf": "78973907050",
+                  "phone": "(99)99999-9999",
+                  "address": [
+                    {
+                      "address": "Rua 01",
+                      "complement": "Center",
+                      "zipCode": "45680-201",
+                      "neighborhood": "Center"
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Client Updated"
+          },
+          "404": {
+            "description": "Not Found Error"
+          },
+          "500": {
+            "description": "Server Error"
+          }
+        }
+      }
+    },
+    "/client/{cpf}": {
+      "get": {
+        "tags": [
+          "Client"
+        ],
+        "summary": "Find Client By Cpf",
+        "description": "Find Client By Cpf",
+        "parameters": [
+          {
+            "name": "cpf",
+            "in": "path",
+            "description": "client cpf",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "type": "string"
+                      },
+                      "description": {
+                        "type": "string"
+                      },
+                      "name": {
+                        "type": "string"
+                      },
+                      "cpf": {
+                        "type": "string"
+                      },
+                      "phone": {
+                        "type": "string"
+                      },
+                      "created_at": {
+                        "type": "string"
+                      },
+                      "updated_at": {
+                        "type": "string"
+                      },
+                      "deleted_at": {
+                        "type": "string"
+                      },
+                      "schema": {
+                        "type": "array",
+                        "items": {
+                          "$ref": "#/definitions/address"
+                        }
+                      },
+                      "purchases": {
+                        "type": "array",
+                        "items": {
+                          "$ref": "#/definitions/purchases"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Client"
+        ],
+        "summary": "Delete Client",
+        "description": "Delete Client",
+        "parameters": [
+          {
+            "name": "cpf",
+            "in": "path",
+            "description": "client cpf",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Client Deleted"
+          },
+          "404": {
+            "description": "Not Found Error"
+          },
+          "500": {
+            "description": "Server Error"
+          }
+        }
+      }
+    },
+    "/client/add-product-to-purchase": {
+      "put": {
+        "tags": [
+          "Client"
+        ],
+        "summary": "Add Product to Purchase",
+        "description": "Add Product to Purchase",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "client_cpf": {
+                    "type": "string"
+                  },
+                  "product_code": {
+                    "type": "string"
+                  },
+                  "purchase_code": {
+                    "type": "string"
+                  },
+                  "name": {
+                    "type": "string"
+                  },
+                  "description": {
+                    "type": "string"
+                  },
+                  "sale_value": {
+                    "type": "string"
+                  }
+                },
+                "example": {
+                  "client_cpf": "54815158687",
+                  "product_code": "12179802-6c39-4b10-ab70-1b03ccdbb3fa",
+                  "purchase_code": "b4b0d6e2-8262-4810-bc89-d622bfe2ad9a",
+                  "name": "Produto 1",
+                  "description": "É um produto legal",
+                  "sale_value": 200
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Sucess"
+          },
+          "404": {
+            "description": "Not Found Error"
+          },
+          "500": {
+            "description": "Server Error"
+          }
+        }
+      }
+    },
+    "/client/add-purchase-to-client": {
+      "put": {
+        "tags": [
+          "Client"
+        ],
+        "summary": "Add Purchase to Client",
+        "description": "Add Purchase to Client",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "client_cpf": {
+                    "type": "string"
+                  },
+                  "schema": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/definitions/product"
+                    }
+                  },
+                  "payment": {
+                    "type": "string"
+                  },
+                  "schema": {
+                    "type": "object",
+                    "items": {
+                      "$ref": "#/definitions/address"
+                    }
+                  },
+                  "delivery_at": {
+                    "type": "string"
+                  }
+                },
+                "example": {
+                  "client_cpf": "54815158687",
+                  "products": [],
+                  "payment": null,
+                  "deliveryAddress": {
+                    "address": "Rua Ayrton Senna",
+                    "complement": "Numero 21",
+                    "zipCode": "65804320",
+                    "neighborhood": "Centro"
+                  },
+                  "delivery_at": "2023-06-09T05:06:32.727Z"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Sucess"
+          },
+          "404": {
+            "description": "Not Found Error"
+          },
+          "500": {
+            "description": "Server Error"
+          }
+        }
+      }
+    },
+    "/client/cancel-purchase": {
+      "put": {
+        "tags": [
+          "Client"
+        ],
+        "summary": "Cancel Purchase",
+        "description": "Cancel Purchase",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "client_cpf": {
+                    "type": "string"
+                  },
+                  "purchase_code": {
+                    "type": "string"
+                  }
+                },
+                "example": {
+                  "client_cpf": "54815158687",
+                  "purchase_code": "b4b0d6e2-8262-4810-bc89-d622bfe2ad9a"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Sucess"
+          },
+          "404": {
+            "description": "Not Found Error"
+          },
+          "500": {
+            "description": "Server Error"
+          }
+        }
+      }
+    },
+    "/client/remove-product-to-purchase": {
+      "put": {
+        "tags": [
+          "Client"
+        ],
+        "summary": "Remove Product to Purchase",
+        "description": "Remove Product to Purchase",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "client_cpf": {
+                    "type": "string"
+                  },
+                  "product_code": {
+                    "type": "string"
+                  },
+                  "purchase_code": {
+                    "type": "string"
+                  }
+                },
+                "example": {
+                  "client_cpf": "54815158687",
+                  "product_code": "12179802-6c39-4b10-ab70-1b03ccdbb3fa",
+                  "purchase_code": "b4b0d6e2-8262-4810-bc89-d622bfe2ad9a"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Sucess"
+          },
+          "404": {
+            "description": "Not Found Error"
+          },
+          "500": {
+            "description": "Server Error"
+          }
+        }
+      }
+    },
+    "/client/checkout": {
+      "put": {
+        "tags": [
+          "Client"
+        ],
+        "summary": "Checkout",
+        "description": "Checkout",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "client_cpf": {
+                    "type": "string"
+                  },
+                  "purchase_code": {
+                    "type": "string"
+                  },
+                  "schema": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/definitions/payment"
+                    }
+                  }
+                },
+                "example": {
+                  "client_cpf": "54815158687",
+                  "purchase_code": "10ede5a7-5dd0-4230-9b16-784f53da04a3",
+                  "payment": {
+                    "payment": "A vista"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Sucess"
+          },
+          "404": {
+            "description": "Not Found Error"
+          },
+          "500": {
+            "description": "Server Error"
+          }
+        }
+      }
+    },
+    "/product": {
+      "post": {
+        "tags": [
+          "Product"
+        ],
+        "summary": "Create a Product",
+        "description": "Create a Product",
+        "security": [],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string"
+                  },
+                  "description": {
+                    "type": "string"
+                  },
+                  "cost_value": {
+                    "type": "string"
+                  },
+                  "sale_value": {
+                    "type": "string"
+                  },
+                  "purchases": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/definitions/category"
+                    }
+                  }
+                },
+                "example": {
+                  "name": "Produto 5",
+                  "description": "em oferta",
+                  "cost_value": 20.99,
+                  "sale_value": 45.59,
+                  "category": [
+                    {
+                      "name": "utilitarios",
+                      "description": "variados"
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Product Created"
+          },
+          "500": {
+            "description": "Server Error"
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "Product"
+        ],
+        "summary": "List all Products",
+        "description": "List all Products",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "type": "string"
+                      },
+                      "code": {
+                        "type": "string"
+                      },
+                      "name": {
+                        "type": "string"
+                      },
+                      "description": {
+                        "type": "string"
+                      },
+                      "cost_value": {
+                        "type": "string"
+                      },
+                      "sale_value": {
+                        "type": "string"
+                      },
+                      "active": {
+                        "type": "string"
+                      },
+                      "created_at": {
+                        "type": "string"
+                      },
+                      "updated_at": {
+                        "type": "string"
+                      },
+                      "deleted_at": {
+                        "type": "string"
+                      },
+                      "schema": {
+                        "type": "array",
+                        "items": {
+                          "$ref": "#/definitions/category"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Product"
+        ],
+        "summary": "Update a Product",
+        "description": "Update a Product",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string"
+                  },
+                  "code": {
+                    "type": "string"
+                  },
+                  "description": {
+                    "type": "string"
+                  },
+                  "cost_value": {
+                    "type": "string"
+                  },
+                  "sale_value": {
+                    "type": "string"
+                  },
+                  "schema": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/definitions/category"
+                    }
+                  }
+                },
+                "example": {
+                  "name": "Produto 01",
+                  "code": "f3c09425-9203-43f3-96fa-5968f7e4ea7a",
+                  "description": "É um produto muito legal",
+                  "cost_value": 100,
+                  "sale_value": 200,
+                  "category": [
+                    {
+                      "name": "tecnologia",
+                      "description": "produtos de tecnologia",
+                      "created_at": null,
+                      "updated_at": null,
+                      "deleted_at": null
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Product Updated"
+          },
+          "404": {
+            "description": "Not Found Error"
+          },
+          "500": {
+            "description": "Server Error"
+          }
+        }
+      }
+    },
+    "/product/{code}": {
+      "get": {
+        "tags": [
+          "Product"
+        ],
+        "summary": "Find Product By Code",
+        "description": "Find Product By Code",
+        "parameters": [
+          {
+            "name": "code",
+            "in": "path",
+            "description": "product code",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Product find"
+          },
+          "404": {
+            "description": "Not Found Error"
+          },
+          "500": {
+            "description": "Server Error"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Product"
+        ],
+        "summary": "Delete Product",
+        "description": "Delete Product",
+        "parameters": [
+          {
+            "name": "code",
+            "in": "path",
+            "description": "product code",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string"
+                  },
+                  "code": {
+                    "type": "string"
+                  },
+                  "description": {
+                    "type": "string"
+                  },
+                  "cost_value": {
+                    "type": "string"
+                  },
+                  "sale_value": {
+                    "type": "string"
+                  },
+                  "schema": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/definitions/category"
+                    }
+                  }
+                },
+                "example": {
+                  "name": "Produto 01",
+                  "code": "f3c09425-9203-43f3-96fa-5968f7e4ea7a",
+                  "description": "É um produto muito legal",
+                  "cost_value": 100,
+                  "sale_value": 200,
+                  "category": [
+                    {
+                      "name": "tecnologia",
+                      "description": "produtos de tecnologia",
+                      "created_at": null,
+                      "updated_at": null,
+                      "deleted_at": null
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Product Deleted"
+          },
+          "404": {
+            "description": "Not Found Error"
+          },
+          "500": {
+            "description": "Server Error"
+          }
+        }
+      }
+    },
+    "/product/active": {
+      "get": {
+        "tags": [
+          "Product"
+        ],
+        "summary": "List all Active Products",
+        "description": "List all Active Products",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "type": "string"
+                      },
+                      "code": {
+                        "type": "string"
+                      },
+                      "name": {
+                        "type": "string"
+                      },
+                      "description": {
+                        "type": "string"
+                      },
+                      "cost_value": {
+                        "type": "string"
+                      },
+                      "sale_value": {
+                        "type": "string"
+                      },
+                      "active": {
+                        "type": "string"
+                      },
+                      "created_at": {
+                        "type": "string"
+                      },
+                      "updated_at": {
+                        "type": "string"
+                      },
+                      "deleted_at": {
+                        "type": "string"
+                      },
+                      "schema": {
+                        "type": "array",
+                        "items": {
+                          "$ref": "#/definitions/category"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/product/disable/{code}": {
+      "put": {
+        "tags": [
+          "Product"
+        ],
+        "summary": "Disable Product",
+        "description": "Disable Product",
+        "parameters": [
+          {
+            "name": "code",
+            "in": "path",
+            "description": "product code",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Sucess"
+          },
+          "404": {
+            "description": "Not Found Error"
+          },
+          "500": {
+            "description": "Server Error"
+          }
+        }
+      }
+    },
+    "/product/enable/{code}": {
+      "put": {
+        "tags": [
+          "Product"
+        ],
+        "summary": "Enable Product",
+        "description": "Enable Product",
+        "parameters": [
+          {
+            "name": "code",
+            "in": "path",
+            "description": "product code",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Sucess"
+          },
+          "404": {
+            "description": "Not Found Error"
+          },
+          "500": {
+            "description": "Server Error"
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "address": {
+      "type": "object",
+      "properties": {
+        "address": {
+          "type": "string"
+        },
+        "complement": {
+          "type": "string"
+        },
+        "zipCode": {
+          "type": "string"
+        },
+        "neighborhood": {
+          "type": "string"
+        }
+      }
+    },
+    "purchases": {
+      "code": {
+        "type": "string"
+      },
+      "products": {
+        "type": "object"
+      },
+      "payment": {
+        "type": "object"
+      },
+      "deliveryAddress": {
+        "type": "string"
+      },
+      "status": {
+        "type": "string"
+      },
+      "delivery_at": {
+        "type": "string"
+      },
+      "created_at": {
+        "type": "string"
+      },
+      "updated_at": {
+        "type": "string"
+      },
+      "deleted_at": {
+        "type": "string"
+      }
+    },
+    "product": {
+      "code": {
+        "type": "string"
+      },
+      "name": {
+        "type": "string"
+      },
+      "payment": {
+        "type": "string"
+      },
+      "description": {
+        "type": "string"
+      },
+      "cost_value": {
+        "type": "string"
+      },
+      "sale_value": {
+        "type": "string"
+      },
+      "amount": {
+        "type": "string"
+      },
+      "active": {
+        "type": "string"
+      },
+      "created_at": {
+        "type": "string"
+      },
+      "updated_at": {
+        "type": "string"
+      },
+      "deleted_at": {
+        "type": "string"
+      },
+      "category": {
+        "type": "object"
+      }
+    },
+    "payment": {
+      "payment": {
+        "type": "string"
+      }
+    },
+    "category": {
+      "name": {
+        "type": "string"
+      },
+      "description": {
+        "type": "string"
+      }
+    }
+  }
+}

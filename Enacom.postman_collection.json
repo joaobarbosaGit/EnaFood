@@ -1,0 +1,474 @@
+{
+	"info": {
+		"_postman_id": "cf74d3b0-b21f-4cf5-8eb3-23efe39350d3",
+		"name": "Enacom",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Client",
+			"item": [
+				{
+					"name": "List Client",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{apiUrl}}/client",
+							"host": [
+								"{{apiUrl}}"
+							],
+							"path": [
+								"client"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Client",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"cliente 5\",\r\n    \"cpf\": \"14931697003\",\r\n    \"phone\": \"(65)98230-3620\",\r\n    \"address\": [\r\n        {\r\n            \"address\": \"Rua Parauna\",\r\n            \"complement\": \"Lote 1\",\r\n            \"zipCode\": \"79070534\",\r\n            \"neighborhood\": \"Rua Parauna\"\r\n        }\r\n    ],\r\n    \"purchases\": []\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{apiUrl}}/client",
+							"host": [
+								"{{apiUrl}}"
+							],
+							"path": [
+								"client"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Find By Cpf",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{apiUrl}}/client/:cpf",
+							"host": [
+								"{{apiUrl}}"
+							],
+							"path": [
+								"client",
+								":cpf"
+							],
+							"variable": [
+								{
+									"key": "cpf",
+									"value": "14931697005"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Client",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{apiUrl}}/client/:cpf",
+							"host": [
+								"{{apiUrl}}"
+							],
+							"path": [
+								"client",
+								":cpf"
+							],
+							"variable": [
+								{
+									"key": "cpf",
+									"value": "string1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Cliente",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Client 6\",\r\n    \"cpf\": \"14931697005\",\r\n    \"phone\": \"(99)99999-9999\",\r\n    \"address\": [\r\n        {\r\n            \"address\": \"Rua 01\",\r\n            \"complement\": \"Center\",\r\n            \"zipCode\": \"45680-201\",\r\n            \"neighborhood\": \"Center\"\r\n        }\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{apiUrl}}/client",
+							"host": [
+								"{{apiUrl}}"
+							],
+							"path": [
+								"client"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add Product",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "\r\n{\r\n    \"client_cpf\":\"14931697005\",\r\n    \"product_code\":\"5885ff8e-bc42-4b13-a17c-0027a16273ab\",\r\n    \"purchase_code\":\"af84330e-d33a-408b-9956-df111af41aae\",\r\n    \"name\": \"Produto 1\",\r\n    \"description\": \"É um produto legal\",\r\n    \"sale_value\":200.5\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{apiUrl}}/client/add-product-to-purchase",
+							"host": [
+								"{{apiUrl}}"
+							],
+							"path": [
+								"client",
+								"add-product-to-purchase"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add Purchase",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"client_cpf\":\"14931697005\",\r\n    \"products\": [],\r\n    \"payment\": null,\r\n    \"deliveryAddress\": {\r\n        \"address\": \"Rua Ayrton Senna\",\r\n        \"complement\": \"Numero 21\",\r\n        \"zipCode\": \"65804320\",\r\n        \"neighborhood\": \"Centro\"\r\n    },\r\n    \"delivery_at\": \"2023-06-09T05:06:32.727Z\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{apiUrl}}/client/add-purchase-to-client",
+							"host": [
+								"{{apiUrl}}"
+							],
+							"path": [
+								"client",
+								"add-purchase-to-client"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Checkout",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"client_cpf\":\"54815158687\",\r\n    \"purchase_code\":\"10ede5a7-5dd0-4230-9b16-784f53da04a3\",\r\n    \"payment\": {\r\n        \"payment\":\"A vista\"\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{apiUrl}}/client/checkout",
+							"host": [
+								"{{apiUrl}}"
+							],
+							"path": [
+								"client",
+								"checkout"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Remove Product",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"client_cpf\":\"14931697005\",\r\n    \"product_code\":\"5885ff8e-bc42-4b13-a17c-0027a16273ab\",\r\n    \"purchase_code\":\"af84330e-d33a-408b-9956-df111af41aae\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{apiUrl}}/client/remove-product-to-purchase",
+							"host": [
+								"{{apiUrl}}"
+							],
+							"path": [
+								"client",
+								"remove-product-to-purchase"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Cancel Purchase",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"client_cpf\":\"54815158687\",\r\n    \"purchase_code\":\"b4b0d6e2-8262-4810-bc89-d622bfe2ad9a\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{apiUrl}}/client/cancel-purchase",
+							"host": [
+								"{{apiUrl}}"
+							],
+							"path": [
+								"client",
+								"cancel-purchase"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Product",
+			"item": [
+				{
+					"name": "List All Products",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{apiUrl}}/product",
+							"host": [
+								"{{apiUrl}}"
+							],
+							"path": [
+								"product"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Product",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Produto 5\",\r\n    \"description\": \"em oferta\",\r\n    \"cost_value\": 20.99,\r\n    \"sale_value\": 45.59,\r\n    \"category\": [\r\n        {\r\n        \"name\": \"utilitarios\",\r\n        \"description\": \"variados\"\r\n        }\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{apiUrl}}/product",
+							"host": [
+								"{{apiUrl}}"
+							],
+							"path": [
+								"product"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Find One By Code Product",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{apiUrl}}/product/:code",
+							"host": [
+								"{{apiUrl}}"
+							],
+							"path": [
+								"product",
+								":code"
+							],
+							"variable": [
+								{
+									"key": "code",
+									"value": "2120c268-a0f8-43d4-9466-998c85f739e9"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Product",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Produto 01\",\r\n    \"code\": \"f3c09425-9203-43f3-96fa-5968f7e4ea7a\",\r\n    \"description\": \"É um produto muito legal\",\r\n    \"cost_value\": 100,\r\n    \"sale_value\": 200,\r\n    \"category\": [\r\n        {\r\n            \"name\": \"tecnologia\",\r\n            \"description\": \"produtos de tecnologia\",\r\n            \"created_at\": null,\r\n            \"updated_at\": null,\r\n            \"deleted_at\": null\r\n        }\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{apiUrl}}/product",
+							"host": [
+								"{{apiUrl}}"
+							],
+							"path": [
+								"product"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Product",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{apiUrl}}/product/:code",
+							"host": [
+								"{{apiUrl}}"
+							],
+							"path": [
+								"product",
+								":code"
+							],
+							"variable": [
+								{
+									"key": "code",
+									"value": "f3c09425-9203-43f3-96fa-5968f7e4ea7a"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "List Active Products",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{apiUrl}}/product/active",
+							"host": [
+								"{{apiUrl}}"
+							],
+							"path": [
+								"product",
+								"active"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Disable Product",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "text"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{apiUrl}}/product/disable/:code",
+							"host": [
+								"{{apiUrl}}"
+							],
+							"path": [
+								"product",
+								"disable",
+								":code"
+							],
+							"variable": [
+								{
+									"key": "code",
+									"value": "2120c268-a0f8-43d4-9466-998c85f739e9"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Enable Product",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "text"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{apiUrl}}/product/enable/:code",
+							"host": [
+								"{{apiUrl}}"
+							],
+							"path": [
+								"product",
+								"enable",
+								":code"
+							],
+							"variable": [
+								{
+									"key": "code",
+									"value": "2120c268-a0f8-43d4-9466-998c85f739e9"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
